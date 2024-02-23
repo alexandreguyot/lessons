@@ -1,36 +1,14 @@
 <div>
     <div class="card-controls sm:flex">
-        <div class="w-full sm:w-1/2">
-            Per page:
-            <select wire:model="perPage" class="form-select w-full sm:w-1/6">
-                @foreach($paginationOptions as $value)
-                    <option value="{{ $value }}">{{ $value }}</option>
-                @endforeach
-            </select>
-
-            @can('lesson_delete')
-                <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
-                    {{ __('Delete Selected') }}
-                </button>
-            @endcan
-
-            @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="Lesson" format="csv" />
-                <livewire:excel-export model="Lesson" format="xlsx" />
-                <livewire:excel-export model="Lesson" format="pdf" />
-            @endif
-
-
-
-
+        <div class="w-full sm:w-1/2 ">
+            Recherche:
+            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block form-control" />
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
-            Search:
-            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block" />
         </div>
     </div>
     <div wire:loading.delay>
-        Loading...
+        Chargement...
     </div>
 
     <div class="overflow-hidden">
@@ -39,10 +17,6 @@
                 <thead>
                     <tr>
                         <th class="w-9">
-                        </th>
-                        <th class="w-28">
-                            {{ trans('cruds.lesson.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
                             {{ trans('cruds.lesson.fields.title') }}
@@ -75,10 +49,6 @@
                     @forelse($lessons as $lesson)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $lesson->id }}" wire:model="selected">
-                            </td>
-                            <td>
-                                {{ $lesson->id }}
                             </td>
                             <td>
                                 {{ $lesson->title }}

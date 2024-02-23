@@ -19,4 +19,12 @@ class CreateLessonsTable extends Migration
             $table->softDeletes();
         });
     }
+
+     /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::drop('lessons');
+    }
 }

@@ -43,7 +43,7 @@
 
                 @can('student_access')
                     <li class="items-center">
-                        <a class="{{ request()->is("admin/students*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.students.index") }}">
+                        <a class="{{ request()->is("admin/eleves*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.students.index") }}">
                             <i class="fa-fw c-sidebar-nav-icon fas fa-user">
                             </i>
                             {{ trans('cruds.student.title') }}

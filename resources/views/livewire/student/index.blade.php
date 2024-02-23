@@ -1,36 +1,14 @@
 <div>
     <div class="card-controls sm:flex">
-        <div class="w-full sm:w-1/2">
-            Per page:
-            <select wire:model="perPage" class="form-select w-full sm:w-1/6">
-                @foreach($paginationOptions as $value)
-                    <option value="{{ $value }}">{{ $value }}</option>
-                @endforeach
-            </select>
-
-            @can('student_delete')
-                <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
-                    {{ __('Delete Selected') }}
-                </button>
-            @endcan
-
-            @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="Student" format="csv" />
-                <livewire:excel-export model="Student" format="xlsx" />
-                <livewire:excel-export model="Student" format="pdf" />
-            @endif
-
-
-
-
+        <div class="w-full sm:w-1/2 ">
+            Recherche:
+            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block form-control" />
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
-            Search:
-            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block" />
         </div>
     </div>
     <div wire:loading.delay>
-        Loading...
+        Chargement...
     </div>
 
     <div class="overflow-hidden">
@@ -40,25 +18,17 @@
                     <tr>
                         <th class="w-9">
                         </th>
-                        <th class="w-28">
-                            {{ trans('cruds.student.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
+                        <th>
+                            {{ trans('cruds.student.fields.lastname') }}
+                            @include('components.table.sort', ['field' => 'lastname'])
                         </th>
                         <th>
                             {{ trans('cruds.student.fields.firstname') }}
                             @include('components.table.sort', ['field' => 'firstname'])
                         </th>
                         <th>
-                            {{ trans('cruds.student.fields.lastname') }}
-                            @include('components.table.sort', ['field' => 'lastname'])
-                        </th>
-                        <th>
                             {{ trans('cruds.student.fields.email') }}
                             @include('components.table.sort', ['field' => 'email'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.student.fields.infos') }}
-                            @include('components.table.sort', ['field' => 'infos'])
                         </th>
                         <th>
                         </th>
@@ -68,22 +38,15 @@
                     @forelse($students as $student)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $student->id }}" wire:model="selected">
-                            </td>
-                            <td>
-                                {{ $student->id }}
-                            </td>
-                            <td>
-                                {{ $student->firstname }}
                             </td>
                             <td>
                                 {{ $student->lastname }}
                             </td>
                             <td>
-                                {{ $student->email }}
+                                {{ $student->firstname }}
                             </td>
                             <td>
-                                {{ $student->infos }}
+                                {{ $student->email }}
                             </td>
                             <td>
                                 <div class="flex justify-end">

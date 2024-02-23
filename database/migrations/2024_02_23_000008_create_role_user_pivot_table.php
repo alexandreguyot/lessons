@@ -15,4 +15,12 @@ class CreateRoleUserPivotTable extends Migration
             $table->foreign('role_id', 'role_id_fk_9528727')->references('id')->on('roles')->onDelete('cascade');
         });
     }
+
+     /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::drop('role_user');
+    }
 }

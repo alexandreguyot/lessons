@@ -69,7 +69,7 @@ return [
     ],
     'student' => [
         'title'          => 'Elèves',
-        'title_singular' => 'Elèfe',
+        'title_singular' => 'Elève',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -91,7 +91,7 @@ return [
     ],
     'lesson' => [
         'title'          => 'Cours',
-        'title_singular' => 'Cour',
+        'title_singular' => 'Cours',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -105,13 +105,13 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
-            'day'               => 'Day',
+            'day'               => 'Jour',
             'day_helper'        => ' ',
             'date_start'        => 'Date de début',
             'date_start_helper' => ' ',
             'date_end'          => 'Date de fin',
             'date_end_helper'   => ' ',
-            'hour'              => 'Hour',
+            'hour'              => 'Heure',
             'hour_helper'       => ' ',
         ],
     ],
@@ -134,8 +134,8 @@ return [
         ],
     ],
     'systemCalendar' => [
-        'title'          => 'Calendar',
-        'title_singular' => 'Calendar',
+        'title'          => 'Calendrier',
+        'title_singular' => 'Calendrier',
     ],
 
 ];

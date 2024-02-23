@@ -22,14 +22,19 @@
 
 @push('scripts')
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
+
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    events: @json($events),
-    initialView: 'dayGridMonth',
-  });
-  calendar.render();
-});
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                events: @json($events),
+                initialView: 'dayGridMonth',
+                buttonText: {
+                    today: "Aujourd'hui",
+                }
+            });
+            calendar.setOption('locale', 'fr');
+            calendar.render();
+        });
     </script>
 @endpush

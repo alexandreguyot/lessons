@@ -15,4 +15,12 @@ class CreateLessonStudentPivotTable extends Migration
             $table->foreign('student_id', 'student_id_fk_9528787')->references('id')->on('students')->onDelete('cascade');
         });
     }
+
+     /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::drop('lesson_student');
+    }
 }

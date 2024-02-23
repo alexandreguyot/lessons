@@ -20,8 +20,6 @@ class StudentSeeder extends Seeder
             'lastname' => Str::random(10),
             'email' => Str::random(10).'@example.com',
             'infos' => "",
-            'created_at' => $timestamp,
-            'updated_at' => $datetime,
         ]);
         DB::table('students')->insert([
             'firstname' => Str::random(10),

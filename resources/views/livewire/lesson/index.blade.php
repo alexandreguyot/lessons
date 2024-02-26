@@ -27,12 +27,7 @@
                             @include('components.table.sort', ['field' => 'day'])
                         </th>
                         <th>
-                            {{ trans('cruds.lesson.fields.date_start') }}
-                            @include('components.table.sort', ['field' => 'date_start'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.lesson.fields.date_end') }}
-                            @include('components.table.sort', ['field' => 'date_end'])
+                            Date
                         </th>
                         <th>
                             {{ trans('cruds.lesson.fields.hour') }}
@@ -57,13 +52,10 @@
                                 {{ $lesson->day_label }}
                             </td>
                             <td>
-                                {{ $lesson->date_start }}
+                                Du {{ $lesson->date_start }} à  {{ $lesson->date_end }}
                             </td>
                             <td>
-                                {{ $lesson->date_end }}
-                            </td>
-                            <td>
-                                {{ $lesson->hour }}
+                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $lesson->hour)->format('H:i') }}
                             </td>
                             <td>
                                 @foreach($lesson->student as $key => $entry)
